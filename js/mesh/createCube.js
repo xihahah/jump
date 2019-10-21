@@ -11,20 +11,18 @@ function createCube(cubes){
   let cube = new Cube(cubeData.cubeWidth, cubeData.cubeHeight, cubeData.cubeDeep, cubeData.cubeColor);
   if(cubes.length){
     let random = Math.random();
-    // console.log(random);
     cube.direcion = random > 0.5 ? 'left' : 'right';
     cube.position.x = cubes[cubes.length - 1].position.x;
     cube.position.y = cubes[cubes.length - 1].position.y;
     cube.position.z = cubes[cubes.length - 1].position.z;
     if(cube.direcion === "left"){
-      //距离上一个 -4 到 -10的距离
-      cube.position.x = cube.position.x - 4*Math.random()-6;
+      //距离上一个 -6 到 -12的距离
+      cube.position.x = cube.position.x - Math.round(6 * Math.random()) - 6;
     }else{
-      cube.position.z = cube.position.z - 4 * Math.random() - 6;
+      cube.position.z = cube.position.z - Math.round(6 * Math.random()) - 6;
     }
   }
-  
-  // console.log(cube);
+
   return cube;
 
 }

@@ -21,22 +21,41 @@ class Player extends THREE.Mesh{
     //再把y的位置设为1   使得中心点在底部
     this.position.y = 1;
     
+  }
+  //参数初始化
+  init = ()=>{
     //设置水平、竖直方向的速度
-    this.xSpeed = .004;
-    this.ySpeed = .008;
+    this.xSpeed = .3;
+    this.ySpeed = 1;
   }
   //蓄力动画
   jumpAnim = () => {
-      this.scale.y -= .05;
-  }
-  //落下
-  down = ()=>{
-    if(this.scale.y < 1){
-      this.scale.y += .1;
-      return true;
-    } else {
-      return false;
+    if (this.scale.y > 0.2) {
+      this.scale.y -= .008;
     }
+  }
+  //跳跃
+  jump = (dir)=>{
+    //恢复原状
+    if (this.scale.y < 1) 
+      this.scale.y += .1;
+
+    // //竖直方向
+    // this.position.y += this.ySpeed;
+    // if (this.position.y !== 1) {
+    //   this.ySpeed -= .5
+    //   if(this.position.y < 1)
+    //   this.position.y = 1;
+    // }
+      
+    //水平方向
+    this.position[dir] -= this.xSpeed;
+    
+  }
+  //掉落
+  fall = ()=>{
+    console.log('jumper fall');
+    this.position.y = 0;
   }
 }
 export default Player;
