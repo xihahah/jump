@@ -12,6 +12,7 @@ function createCube(cubes){
   if(cubes.length){
     let random = Math.random();
     cube.direcion = random > 0.5 ? 'left' : 'right';
+    // cube.direcion = 'left';
     cube.position.x = cubes[cubes.length - 1].position.x;
     cube.position.y = cubes[cubes.length - 1].position.y;
     cube.position.z = cubes[cubes.length - 1].position.z;
@@ -22,7 +23,6 @@ function createCube(cubes){
       cube.position.z = cube.position.z - Math.round(6 * Math.random()) - 6;
     }
   }
-
   return cube;
 
 }

@@ -20,7 +20,6 @@ class Player extends THREE.Mesh{
    
     //再把y的位置设为1   使得中心点在底部
     this.position.y = 1;
-    
   }
   //参数初始化
   init = ()=>{
@@ -36,6 +35,7 @@ class Player extends THREE.Mesh{
   }
   //跳跃
   jump = (dir)=>{
+    this.position.y = 1;
     //恢复原状
     if (this.scale.y < 1) 
       this.scale.y += .1;
@@ -43,7 +43,7 @@ class Player extends THREE.Mesh{
     // //竖直方向
     // this.position.y += this.ySpeed;
     // if (this.position.y !== 1) {
-    //   this.ySpeed -= .5
+    //   this.ySpeed -= .1
     //   if(this.position.y < 1)
     //   this.position.y = 1;
     // }
@@ -56,6 +56,7 @@ class Player extends THREE.Mesh{
   fall = ()=>{
     console.log('jumper fall');
     this.position.y = 0;
+    // this.rotateX(10);
   }
 }
 export default Player;
